@@ -9,6 +9,8 @@ export const EmployeeForm = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [showAlert, setshowAlert] = useState(false);
+
+    const [inputAlert, setInputAlert]= useState(false)
     const { inputValues, handleInputChange, resetForm, setForm } = useForm({
         roll:'',
         name: '',
@@ -54,6 +56,17 @@ export const EmployeeForm = () => {
                     </div>
                 )
             }
+
+
+{
+              inputAlert && (
+                    <div className="px-5">
+                        <div className="alert alert-danger">
+                            <strong>Please Enter all Input values</strong> 
+                        </div>
+                    </div>
+                )
+            }
                 <form onSubmit={handleSubmit}>
 
                 <div className="form-group">
@@ -66,8 +79,13 @@ export const EmployeeForm = () => {
                             onChange={handleInputChange}
                             className=""
                             id="inputValid"
+                            required
                         />
-                        {inputValues.roll.length===0?<p className='color-green'>Please enter Values in btweeen 2</p>:<p className='color-red'>Roll No is valid</p>}
+                       {
+                        inputAlert&&(
+                            inputValues.roll.length===0?<p className='color-red'>Roll No is Is Invalid</p>:<p className='color-green'>Roll No is Valid</p>
+                        )
+                       }
                     </div>
 
 
@@ -84,6 +102,11 @@ export const EmployeeForm = () => {
                             id="inputValid"
                             required
                         />
+                        {
+                        inputAlert&&(
+                            inputValues.name.length===0?<p className='color-red'>Name is Is Invalid</p>:<p className='color-green'>Name is Valid</p>
+                        )
+                       }
                     </div>
 
                     <div className="form-group">
@@ -97,7 +120,7 @@ export const EmployeeForm = () => {
                             id="inputValid"
                         /> */}
 
-                        <select name="grade" id="grade" value={inputValues.grade} onChange={handleInputChange}>
+                        <select name="grade" id="grade" value={inputValues.grade} onChange={handleInputChange}  required>
                             <option value="1st class">1st class</option>
                             <option value="2nd class">2nd class</option>
                             <option value="3rd class">3rd class</option>
@@ -120,7 +143,8 @@ export const EmployeeForm = () => {
                             value={inputValues.email}
                             onChange={handleInputChange}
                             className=""
-                            id="inputValid"
+                            id="inputValid" 
+                            required
                         />
                     </div>
 
@@ -148,21 +172,24 @@ export const EmployeeForm = () => {
                             onChange={handleInputChange}
                             className=""
                             id="inputValid"
+                            required
                         />
+                         {
+                        inputAlert&&(
+                            inputValues.phone.length===0?<p className='color-red'>Phone Number is Is Invalid</p>:
+                            inputValues.phone.length>=10?<p className='color-green'>Phone Number is correct</p>:<p className='color-red'>Phone Number Must be 10 digit</p>
+                        )
+                       }
                     </div>
 
 
-                    {/* <div className="d-grid gap-2 mt-3">
-                        <button type="submit" onClick={()=>setTimeout(() => {
-                            navigate(-1)
-                        },1400)} className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Employee</button>
-                    </div> */}
+                 
   <div className="d-grid gap-2 mt-3">
                     {
                        
                         (inputValues.phone&&inputValues.address&&inputValues.email&&inputValues.grade&&inputValues.name&&inputValues.roll)===''?
                      
-                         <button type="submit" onClick={()=>alert('Please enter all inputs')} className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Employee</button>
+                         <button  onClick={()=>setInputAlert(true)} className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Employee</button>
                         : <button type="submit" onClick={()=>setTimeout(() => {
                             navigate(-1)
                         },1400)} className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Employee</button>
@@ -171,38 +198,11 @@ export const EmployeeForm = () => {
                      </div>
 
                 
-<<<<<<< HEAD
-                onClick={() => setInputAlert(true)}
-                className="btn btn-outline-primary btn-block"
-              >
-                {id ? "Edit" : "Add"} Employee
-              </button>
-            ) : (
-              <button
-                type="submit"
-                onClick={() =>
-                  setTimeout(() => {
-                    navigate(-1);
-                  }, 1500)
-                }
-                className="btn btn-outline-primary btn-block"
-              >
-                {id ? "Edit" : "Add"} Employee
-              </button>
-            )}
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
-=======
-                </form>
+                     </form>
             </div>
 
            
 
         </div >
-    )
-}
->>>>>>> parent of c8df677 (Final changes)
+  );
+};
