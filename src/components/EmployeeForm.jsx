@@ -122,6 +122,7 @@ export const EmployeeForm = () => {
                         /> */}
 
                         <select name="grade" id="grade" value={inputValues.grade} onChange={handleInputChange}  required>
+                            <option disabled></option>
                             <option value="1st class">1st class</option>
                             <option value="2nd class">2nd class</option>
                             <option value="3rd class">3rd class</option>
