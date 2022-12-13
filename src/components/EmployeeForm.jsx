@@ -194,17 +194,14 @@ export const EmployeeForm = () => {
                          <button  onClick={()=>setInputAlert(true)} className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Employee</button>
                         : <button type="submit" onClick={()=>setTimeout(() => {
                             navigate(-1)
-                        },1400)} className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Employee</button>
-                       
+                        },1400)} className="btn btn-outline-primary btn-block">{id && inputValues.phone&&inputValues.address&&inputValues.email&&inputValues.grade&&inputValues.name&&inputValues.roll in Employee ? 'ediy': 'ADD'</button>
+  
                     }
                      </div>
 
                 
                      </form>
-            </div>
-
-           
-
+            </div>   
         </div >
   );
 };
