@@ -213,7 +213,7 @@ export const EmployeeForm = () => {
                 onClick={() => setInputAlert(true)}
                 className="btn btn-outline-primary btn-block"
               >
-                {id ? "Edit" : "Add"} Employee
+                {id ? "Edit" : "Add"} Student
               </button>
             ) : (
               <button
@@ -225,7 +225,7 @@ export const EmployeeForm = () => {
                 }
                 className="btn btn-outline-primary btn-block"
               >
-                {id ? "Edit" : "Add"} Employee
+                {id ? "Done" : "Add"} 
               </button>
             )}
           </div>
