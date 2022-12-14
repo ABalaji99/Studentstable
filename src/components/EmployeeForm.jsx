@@ -225,7 +225,7 @@ export const EmployeeForm = () => {
                 }
                 className="btn btn-outline-primary btn-block"
               >
-                {id ? "Done" : "Add"} 
+                {id ? "Update" : "Add"} 
               </button>
             )}
           </div>
